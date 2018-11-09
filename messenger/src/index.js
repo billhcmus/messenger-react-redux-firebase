@@ -10,13 +10,22 @@ import {rootReducer} from "./reducer";
 import 'antd/dist/antd.css';
 import './css/app.css'
 
-const firebaseConfig = {
-    apiKey: "AIzaSyCnfAP9Xlwr_3FghFe84iQm1PUE32Na1K8",
-    authDomain: "messenger-3676d.firebaseapp.com",
-    databaseURL: "https://messenger-3676d.firebaseio.com",
-    projectId: "messenger-3676d",
-    storageBucket: "messenger-3676d.appspot.com",
-    messagingSenderId: "556380240160"
+// const firebaseConfig = {
+//     apiKey: "AIzaSyCnfAP9Xlwr_3FghFe84iQm1PUE32Na1K8",
+//     authDomain: "messenger-3676d.firebaseapp.com",
+//     databaseURL: "https://messenger-3676d.firebaseio.com",
+//     projectId: "messenger-3676d",
+//     storageBucket: "messenger-3676d.appspot.com",
+//     messagingSenderId: "556380240160"
+// };
+
+var firebaseConfig = {
+    apiKey: "AIzaSyAGdlaY_9rIM38x_wY68phC07WB3LyKurQ",
+    authDomain: "messenger-mid-term.firebaseapp.com",
+    databaseURL: "https://messenger-mid-term.firebaseio.com",
+    projectId: "messenger-mid-term",
+    storageBucket: "",
+    messagingSenderId: "104035033680"
 };
 
 firebase.initializeApp(firebaseConfig);
@@ -24,7 +33,7 @@ firebase.initializeApp(firebaseConfig);
 // react-redux-firebase options
 const config = {
     userProfile: 'users', // firebase root where user profiles are stored
-    firebaseStateName: 'firebase', // should match the reducer name ('firebase' is default)
+    firebaseStateName: 'firebase',// should match the reducer name ('firebase' is default)
 };
 
 const createStoreWithFirebase = compose(

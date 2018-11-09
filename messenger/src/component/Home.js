@@ -1,10 +1,10 @@
 import React, {Component} from 'react'
-import {withRouter} from 'react-router-dom'
 import {connect} from 'react-redux'
 import {compose} from 'redux'
 import {firebaseConnect, isEmpty} from 'react-redux-firebase'
 import PageHeader from "./Header";
 import Conversations from "./Conversation";
+import {changeActiveChannelId} from "../action";
 class Home extends Component {
 
     constructor(props) {
@@ -28,12 +28,11 @@ class Home extends Component {
         window.removeEventListener("resize", this._onResize);
     }
 
-    componentWillMount() { // auto check when authenticated change, ex: when user click signOut
+    componentWillMount() {
         if (isEmpty(this.props.auth)) {
             this.props.history.push("/login");
         }
     }
-
     componentWillUpdate() {
         if (isEmpty(this.props.auth)) {
             this.props.history.push("/login");
@@ -58,10 +57,19 @@ class Home extends Component {
     }
 }
 
+const mapStateToProps = state => ({
+    auth: state.firebase.auth,
+    users: state.firebase.ordered.users
+});
+
+const mapDispatchToProps = dispatch => {
+    return {
+        changeActiveChannel: (id) => {
+            dispatch(changeActiveChannelId(id))
+        }
+    }
+};
 export default compose(
-    firebaseConnect(),
-    withRouter,
-    connect((state) => ({
-        auth: state.firebase.auth,
-    }))
+    firebaseConnect(['users']),
+    connect(mapStateToProps, mapDispatchToProps)
 )(Home)

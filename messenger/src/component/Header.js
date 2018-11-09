@@ -59,8 +59,13 @@ class PageHeader extends Component {
     }
 }
 
+const mapStateToProps = state => ({
+    auth: state.firebase.auth,
+    users: state.firebase.ordered.users
+});
+
 export default compose(
-    firebaseConnect(), // withFirebase can also be used
+    firebaseConnect(['users']), // withFirebase can also be used
     withRouter,
-    connect(({firebase: {auth}}) => ({auth}))
+    connect(mapStateToProps, null)
 )(PageHeader)

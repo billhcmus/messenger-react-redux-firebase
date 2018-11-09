@@ -44,7 +44,7 @@ class MessageInput extends Component{
             }
         );
         this.props.firebase.database().ref(`users/${_.get(this.props.auth, "uid")}/channels/${this.props.activeChannelId}`)
-            .update({updated: new Date().getTime()})
+            .update({updated: new Date().getTime()});
         this.props.firebase.database().ref(`users/${this.props.activeChannelId}/channels/${_.get(this.props.auth, "uid")}`)
             .update({updated: new Date().getTime()})
     }
