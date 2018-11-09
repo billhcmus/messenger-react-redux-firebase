@@ -1,0 +1,222 @@
+@import 'variable';
+body, html {
+  margin: 0;
+  padding: 0;
+  color: $body-color;
+  font-size: 13px;
+  font-family: 'Open Sans', sans-serif;
+}
+* {
+  box-sizing: border-box;
+  padding: 0;
+}
+
+.main-page {
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-content {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  .sidebar-left {
+    border-right: solid 1px $border-color;
+    border-top: solid 1px $border-color;
+    flex-grow: 1;
+    width: 350px;
+  }
+  .sidebar-right {
+    border-top: solid 1px $border-color;
+    border-left: solid 1px $border-color;
+    flex-grow: 1;
+    width: 350px;
+
+  }
+  .content {
+    border-top: solid 1px $border-color;
+    flex-grow: 3;
+    min-width: 600px;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    .messages {
+      overflow-y: auto;
+      height: 100%;
+    }
+    .message-input {
+      flex-grow: 1;
+      height: 70px;
+      display: flex;
+      flex-direction: row;
+      border-top: solid 1px $border-color;
+      .text-input {
+        flex-grow: 1;
+        textarea {
+          width: 100%;
+          height: 100%;
+          border: none;
+          padding: 5px;
+          border-radius: 5px;
+        }
+      }
+      .actions {
+        margin: auto;
+      }
+    }
+  }
+}
+
+.messages {
+  display: flex;
+  flex-direction: column;
+  .message {
+    margin: 45px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    .message-user-image {
+      img {
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+      }
+    }
+    .message-body {
+      padding-left: 10px;
+      margin: 0px 15px;
+      border-radius: 15px;
+      .message-text {
+        background: $body-color;
+        color: white;
+        padding: 10px;
+        border-radius: 10px;
+        p {
+          margin-top: 1px;
+          margin-bottom: 1px;
+          text-align: center;
+        }
+      }
+    }
+    &.me {
+      justify-content: flex-end;
+      .message-body {
+        .message-text {
+          background: $primary-color;
+        }
+      }
+    }
+  }
+}
+
+
+.header {
+  height: $header-height;
+  display:flex;
+  flex-direction: row;
+  color: aliceblue;
+
+  .header-left {
+    width: $left-sidebar-width;
+    display: flex;
+  }
+  .header-content {
+    flex-grow: 3;
+    padding-top: 20px;
+    h2 {
+      text-align: center;
+      color: aliceblue;
+    }
+  }
+  .header-right {
+    width: $right-sidebar-width;
+    .user-bar {
+      display: flex;
+      flex-direction: row;
+      .profile-name {
+        flex-grow: 2;
+      }
+      .profile-img {
+        flex-grow: 1;
+        img {
+          width: 50px;
+          height: 50px;
+          border-radius: 50%;
+        }
+      }
+      .profile-img:hover {
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+.channels {
+  margin-top: 10px;
+  overflow-y: scroll;
+  height: 100%;
+  .channel {
+    display: flex;
+    padding-left: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    .user-image {
+      img {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+      }
+      .channel-avatars {
+        overflow: hidden;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background-color: #ccc;
+        position: relative;
+      }
+    }
+    .channel-info {
+      margin:0px 10px;
+      flex-grow: 1;
+      h2 {
+        font-size: 13px;
+        font-weight: 600;
+      }
+      .online {
+        color: $green;
+      }
+
+      .offline {
+        color: $orange;
+      }
+    }
+    .channel-setting {
+      display: none;
+      padding-top: 35px;
+      padding-right: 5px;
+    }
+
+    &.active {
+      background: #ecf0f1;
+    }
+
+    &.notify {
+      .channel-info {
+        p {
+          font-weight: bold;
+          color: $primary-color;
+        }
+      }
+    }
+  }
+  .channel:hover {
+    background: #ecf0f1;
+    cursor: pointer;
+    .channel-setting {
+      display: block;
+    }
+  }
+}
