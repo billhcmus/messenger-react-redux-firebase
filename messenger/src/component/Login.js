@@ -15,8 +15,11 @@ class LoginPage extends Component {
 
     render() {
         return (
-            <div className="d-flex justify-content-between mt-1">
-                <button type="button" className="btn btn-social btn-google" onClick={() => this.props.firebase.login({ provider: 'google', type: 'popup' })}>
+            <div className="login">
+                <div>
+                    <h2>Welcome to Let's Chat</h2>
+                </div>
+                <button type="button" className="btn btn-social btn-google login-button" onClick={() => this.props.firebase.login({ provider: 'google', type: 'popup' })}>
                     <span className="fa fa-google"/> Sign in with Google
                 </button>
             </div>

@@ -35,7 +35,7 @@ class PageHeader extends Component {
 
         let currentChannelSelected = undefined;
 
-        if (this.props.activeChannelId !== 0) {
+        if (this.props.activeChannelId !== 0 && this.props.users !== undefined && this.props.users !== null) {
             let i;
             for (i = 0; i < this.props.users.length; ++i) {
                 if (this.props.users[i].key === this.props.activeChannelId) {

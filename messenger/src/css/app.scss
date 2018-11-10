@@ -12,6 +12,17 @@ body, html {
   padding: 0;
 }
 
+.login {
+  margin-top: 100px;
+  text-align: center;
+  .login-button {
+    border: 1px solid;
+  }
+  .login-button:hover{
+    cursor: pointer;
+  }
+}
+
 .main-page {
   overflow: hidden;
   display: flex;

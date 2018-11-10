@@ -28,8 +28,6 @@ class App extends Component {
                     });
                 }
                 this.props.firebase.database().ref(`users/${user.uid}`).update({online: true});
-                // this.props.firebase.database().ref(`users/${user.uid}`).update({star: false});
-                // this.props.firebase.database().ref(`users/${user.uid}`).update({updated: 0});
 
                 this.props.firebase.database().ref(`users/${user.uid}`).onDisconnect().update({online: false});
                 this.props.firebase.database().ref(`users/${user.uid}`).onDisconnect().update({lastOnline: this.props.firebase.database.ServerValue.TIMESTAMP});
