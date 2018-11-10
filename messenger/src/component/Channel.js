@@ -13,10 +13,20 @@ class Channel extends Component {
     constructor(props) {
         super(props);
         this.handleChannelClick = this.handleChannelClick.bind(this);
+        this.handleStarClick = this.handleStarClick.bind(this);
     }
 
     handleChannelClick(id) {
         this.props.changeActiveChannel(id);
+    }
+
+    handleStarClick(channel) {
+        let star = true;
+        if (_.get(channel.value, "star")) {
+            star = false;
+        }
+        this.props.firebase.database().ref(`users/${_.get(this.props.auth, "uid")}/channels/${channel.key}`)
+             .update({star: star})
     }
 
     render() {
@@ -32,7 +42,6 @@ class Channel extends Component {
                     });
                 }
             }
-
             this.props.users.forEach((user, id) => {
                 if (user.key !== this.props.auth.uid && listChannelsInfo[user.key] !== undefined) {
                     if (user.key === listChannelsInfo[user.key].channelId) {
@@ -49,6 +58,12 @@ class Channel extends Component {
             }
             if (a.value.updated < b.value.updated) {
                 return 1;
+            }
+            return 0;
+        });
+        listChannels = listChannels.sort((a,b) => {
+            if (a.value.star === true && (b.value.star === false || b.value.star === undefined) && a.value.online === true) {
+                return -1;
             }
             return 0;
         });
@@ -76,6 +91,13 @@ class Channel extends Component {
                                                     <i className="fa fa-circle offline"/> {moment(_.get(channel.value, "lastOnline")).fromNow()}
                                                 </div>
                                         }
+                                    </div>
+                                    <div className={"channel-setting"} onClick={() => this.handleStarClick(channel)}>
+                                        {
+                                            _.get(channel.value, "star") ? <i className={"icon-star"}/>
+                                                : <i className={"icon-star-o"}/>
+                                        }
+
                                     </div>
                                 </div>
                             )

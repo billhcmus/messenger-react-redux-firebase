@@ -24,7 +24,7 @@ var firebaseConfig = {
     authDomain: "messenger-mid-term.firebaseapp.com",
     databaseURL: "https://messenger-mid-term.firebaseio.com",
     projectId: "messenger-mid-term",
-    storageBucket: "",
+    storageBucket: "gs://messenger-mid-term.appspot.com",
     messagingSenderId: "104035033680"
 };
 

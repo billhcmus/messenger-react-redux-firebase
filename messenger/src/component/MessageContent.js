@@ -5,6 +5,8 @@ import classNames from 'classnames'
 import {compose} from 'redux'
 import {connect} from 'react-redux'
 import {firebaseConnect} from 'react-redux-firebase'
+import {parseURL} from "../constant";
+import isImageURL from 'is-image-url'
 
 class MessageContent extends Component {
     constructor(props) {
@@ -27,9 +29,12 @@ class MessageContent extends Component {
     }
 
     renderMessage(message) {
-        const msgtext = _.get(message, "body", "");
-        let html = _.split(msgtext, "\n").map((line, key) => {
-            return <p key={key} dangerouslySetInnerHTML={{__html: line}}/>;
+        let  html = _.split(message, "\n").map((line, key) => {
+            if (isImageURL(line.replace(/\n/g, ''))) {
+                return <img key={key} src={line.replace(/\n/g, '')} alt=""/>;
+            } else {
+                return <p key={key} dangerouslySetInnerHTML={{__html: line}}/>;
+            }
         });
         return html;
     }
@@ -60,7 +65,7 @@ class MessageContent extends Component {
                                     <div className={"message-body"}>
                                         <div className={"message-author"}>{_.get(message, "author")}</div>
                                         <div className={"message-text"}>
-                                            {_.get(message, "body")}
+                                            {this.renderMessage(_.get(message, "body"))}
                                         </div>
                                     </div>
                                 </div>
