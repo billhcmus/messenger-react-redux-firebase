@@ -63,22 +63,20 @@ body, html {
   flex-direction: row;
   height: 100%;
   width: 100%;
+  margin: 3px;
   overflow: hidden;
 }
 .main-content .sidebar-left {
   border-right: solid 1px rgba(0, 0, 0, 0.1);
-  border-top: solid 1px rgba(0, 0, 0, 0.1);
   flex-grow: 1;
   width: 350px;
 }
 .main-content .sidebar-right {
-  border-top: solid 1px rgba(0, 0, 0, 0.1);
   border-left: solid 1px rgba(0, 0, 0, 0.1);
   flex-grow: 1;
   width: 350px;
 }
 .main-content .content {
-  border-top: solid 1px rgba(0, 0, 0, 0.1);
   flex-grow: 3;
   min-width: 600px;
   display: flex;
@@ -255,6 +253,44 @@ body, html {
 .channels .channel:hover {
   background: #ecf0f1;
   cursor: pointer;
+}
+
+.search-user {
+  position: fixed;
+  background: white;
+  width: 350px;
+}
+.search-user .user-list {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  max-height: 150px;
+  overflow-y: auto;
+  border-radius: 5px;
+}
+.search-user .user-list .user {
+  display: flex;
+  flex-direction: row;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 10px;
+  cursor: pointer;
+  min-height: 35px;
+}
+.search-user .user-list .user img {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+}
+.search-user .user-list .user h2 {
+  margin: 3px 5px;
+  font-size: 14px;
+}
+.search-user .user-list .user:last-child {
+  margin-bottom: 5px;
+}
+.search-user .user-list .user:hover {
+  background: #ecf0f1;
 }
 
 /*# sourceMappingURL=app.css.map */

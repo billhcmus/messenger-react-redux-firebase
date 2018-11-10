@@ -5,7 +5,6 @@ import classNames from 'classnames'
 import {compose} from 'redux'
 import {connect} from 'react-redux'
 import {firebaseConnect} from 'react-redux-firebase'
-import {parseURL} from "../constant";
 import isImageURL from 'is-image-url'
 
 class MessageContent extends Component {

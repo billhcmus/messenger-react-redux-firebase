@@ -15,15 +15,12 @@ class App extends Component {
                     this.props.users.forEach((u,id) => {
                         if (u.key !== user.uid) {
                             let channelId = u.key;
-                            let updated = new Date().getTime();
-                            let star = false;
 
                             this.props.firebase.database().ref(`users/${user.uid}/channels/${channelId}`).update({
                                 channelId,
                             });
                             // push new user to available users
                             channelId = user.uid;
-                            updated = 0;
                             this.props.firebase.database().ref(`users/${u.key}/channels/${user.uid}`).update({
                                 channelId,
                             });

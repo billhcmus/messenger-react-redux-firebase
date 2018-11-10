@@ -32,6 +32,19 @@ class PageHeader extends Component {
                 </Menu.Item>
             </Menu>
         );
+
+        let currentChannelSelected = undefined;
+
+        if (this.props.activeChannelId !== 0) {
+            let i;
+            for (i = 0; i < this.props.users.length; ++i) {
+                if (this.props.users[i].key === this.props.activeChannelId) {
+                    currentChannelSelected = this.props.users[i].value;
+                    break;
+                }
+            }
+        }
+
         return (
             <Header>
                 {
@@ -40,7 +53,11 @@ class PageHeader extends Component {
                             <div className={"header-left"}>
                             </div>
                             <div className={"header-content"}>
-                                <h2>{_.get(this.props.auth, "displayName")}</h2>
+                                {
+                                    currentChannelSelected !== undefined ?
+                                        <h2>{_.get(currentChannelSelected, "displayName")}</h2>
+                                        : null
+                                }
                             </div>
                             <div className={"header-right"}>
                                 <div className={"user-bar"}>
@@ -61,7 +78,8 @@ class PageHeader extends Component {
 
 const mapStateToProps = state => ({
     auth: state.firebase.auth,
-    users: state.firebase.ordered.users
+    users: state.firebase.ordered.users,
+    activeChannelId: state.channelReducer.activeChannelId
 });
 
 export default compose(
