@@ -67,4 +67,4 @@ https://messenger-mid-term.firebaseapp.com
 
 ### Git commit
 
-![](https://raw.githubusercontent.com/billhcmus/messenger-react-redux-firebase/master/images/git-commit.png)
+![](https://raw.githubusercontent.com/billhcmus/messenger-react-redux-firebase/master/images/commit.png)
