@@ -20,7 +20,7 @@ npm start
 
 ### Project structure
 
-![]()
+![](https://raw.githubusercontent.com/billhcmus/messenger-react-redux-firebase/master/images/project-structure.png)
 
 - Detail:
     - ```index.js```
@@ -41,7 +41,7 @@ npm start
         - This folder contain one file call ```index.js``` to definition some variable const.
     - ```action```:
         - This contain some define of action. Ex: ```changeActiveChannelId```
-    - ```css``:
+    - ```css```:
         - This contain some style sheet for above component.
 
 ### Package using in this Project
