@@ -52,18 +52,26 @@ class Channel extends Component {
                 }
             })
         }
+
         listChannels = listChannels.sort((a,b) => {
-            if (a.value.updated  > b.value.updated) {
-                return -1;
-            }
-            if (a.value.updated < b.value.updated) {
+            if (b.value.star === true && (a.value.star === false || a.value.star === undefined) && b.value.online === true) {
                 return 1;
-            }
-            return 0;
-        });
-        listChannels = listChannels.sort((a,b) => {
-            if (a.value.star === true && (b.value.star === false || b.value.star === undefined) && a.value.online === true) {
-                return -1;
+            } else if ((a.value.star === false || a.value.star === undefined) && (b.value.star === false || b.value.star === undefined)) {
+                if (a.value.updated  > b.value.updated) {
+                    return -1;
+                }
+                if ((a.value.updated < b.value.updated) || b.value.updated !== undefined) {
+                    return 1;
+                }
+                return 0;
+            } else if (a.value.star === true && b.value.star === true) {
+                if (a.value.updated  > b.value.updated) {
+                    return -1;
+                }
+                if (a.value.updated < b.value.updated) {
+                    return 1;
+                }
+                return 0;
             }
             return 0;
         });
