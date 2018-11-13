@@ -4,6 +4,7 @@
 - This app was created by Phan Trọng Thuyên
 - Using React, Redux and Firebase
 - A simple chat app, you can use to chat with other person, you can also send image file.
+- Git repository: ```https://github.com/billhcmus/messenger-react-redux-firebase```
 
 ### How to build
 - Go to project path and type the follow command:
@@ -63,3 +64,7 @@ is-image-url
 ### Web Page
 
 https://messenger-mid-term.firebaseapp.com
+
+### Git commit
+
+![](https://raw.githubusercontent.com/billhcmus/messenger-react-redux-firebase/master/images/git-commit.png)
